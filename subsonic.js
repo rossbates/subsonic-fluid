@@ -1,3 +1,12 @@
+/*
+
+Fluid App Userscript
+Subsonic web interface
+
+use: window.fluid.include('subsonic.js')
+
+*/
+
 var fr = parent.frames["playQueue"];
 
 /* setup dock menu on init */
