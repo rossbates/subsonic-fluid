@@ -2,27 +2,45 @@
 
 Fluid App Userscript
 Subsonic web interface
-
-use: window.fluid.include('subsonic.js')
+author: Ross Bates (rbates@gmail.com)
+usage: window.fluid.include('subsonic.js')
 
 */
 
-var fr = parent.frames["playQueue"];
 
-/* setup dock menu on init */
-window.fluid.addDockMenuItem("Next", goNext);
-window.fluid.addDockMenuItem("Previous", goPrevious);
-window.fluid.addDockMenuItem("Pause", togglePause);
+queue = parent.frames["playQueue"];
+player = null;
+
+/* can't get document DOMContentLoaded event in Fluid, falling back to this */
+setTimeout(function(){ playerInit(); }, 5000);
+
+function playerInit(){
+    window.console.log("Initilizing player extensions...");
+    player = queue.jwplayer.getPlayers()[0];
+    window.fluid.addDockMenuItem("Next", goNext);
+    window.fluid.addDockMenuItem("Previous", goPrevious);
+    window.fluid.addDockMenuItem("Pause", togglePause);
+    //player.onPlay(function() {playerStarted();});
+    //player.onPause(function() {playerPaused();});
+};
 
 
-/* detects playing state and toggles between play  pause*/
+function playerStarted(){
+    //stub player start
+};
+
+function playerPaused(){
+    //stub player pause
+};
+
+
+/* detects playing state and toggles between play & pause */
 function togglePause() {
-    var pl = fr.jwplayer.getPlayers()[0];
-    pl.pause();
-    if (pl.getState() == 'PLAYING'){
+    player.pause();
+    if (player.getState() == 'PLAYING'){
         window.fluid.removeDockMenuItem("Play");
         window.fluid.addDockMenuItem("Pause", togglePause);
-    }else if (pl.getState() == 'PAUSED'){
+    }else if (player.getState() == 'PAUSED'){
         window.fluid.removeDockMenuItem("Pause");
         window.fluid.addDockMenuItem("Play", togglePause);
     };
@@ -31,10 +49,10 @@ function togglePause() {
 
 /* move to previous song, returns null on first */
 function goPrevious() {
-    fr.onPrevious();
+    queue.onPrevious();
 };
 
 /* move to next song in the queue, returns null on last */
 function goNext() {
-    fr.onNext();
+    queue.onNext();
 };
