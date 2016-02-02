@@ -1,10 +1,8 @@
 /*
-
 Fluid App Userscript
 Subsonic web interface
 author: Ross Bates (rbates@gmail.com)
 usage: window.fluid.include('subsonic.js')
-
 */
 
 
