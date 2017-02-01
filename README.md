@@ -4,7 +4,9 @@ This project contains userscripts and assets for creating a Subsonic desktop cli
 
 Currently supports Next, Previous, Pause/Play.
 
-![Screenshot](subsonic-fluid-screenshot.png "Subsonic desktop app in action")
+Update Jan 31 2017: Last version supports HTML5 player in Subsonic 6. Use the subsonic6.js file in the repo. I'll leave the version 5 up in case someone still needs it.
+
+![Screenshot](subsonic6-fluid-screenshot.png "Subsonic desktop app in action")
 
 
 Notes
