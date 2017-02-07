@@ -1,8 +1,8 @@
 /*
 Fluid App Userscript
-Subsonic 6 web interface
+Subsonic 6 web interface (HTML5 Player)
 author: Ross Bates (rbates@gmail.com)
-usage: window.fluid.include('subsonic.js')
+usage: window.fluid.include('subsonic6.js');
 */
 
 
@@ -39,12 +39,12 @@ function togglePause() {
     if (player.paused) {
             window.fluid.removeDockMenuItem("Pause");
             window.fluid.addDockMenuItem("Play", togglePause);
- 
+
             } else {
             window.fluid.removeDockMenuItem("Play");
             window.fluid.addDockMenuItem("Pause", togglePause);
     }
-    
+
 
 };
 
